@@ -12,13 +12,32 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var questions = [
+      'Which is your favourite colour?',
+      'Which is your favourite animal?',
+    ];
+
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
         // this is he default AppBar
         title: Text('My First App'),
       ),
-      body: Text('Hi, Raghav!!'),
+      body: Column(children: [
+        Text('What is your favourite colour?'),
+        RaisedButton(
+          child: Text('Orange'),
+          onPressed: null,
+        ),
+        RaisedButton(
+          child: Text('Red'),
+          onPressed: null,
+        ),
+        RaisedButton(
+          child: Text('Yellow'),
+          onPressed: null,
+        ),
+      ]),
     ));
   }
 }
