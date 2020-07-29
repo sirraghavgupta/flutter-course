@@ -30,7 +30,7 @@ void main() {
  * a flutter app is just a tree of widgets. the entire app is a widget also.
  * so, we need to create the root widget first. and we are doing that here.  
  * 
- * a widget in flutter is justa dart class with a build method which is compilsory. 
+ * a widget in flutter is just a dart class with a build method which is compulsory. 
  * when flutter will render the widget, it will call the build method which 
  * will always return a widget also and again flutter calls the build method on 
  * that and the process continues untill we get a basic widget in return which 
