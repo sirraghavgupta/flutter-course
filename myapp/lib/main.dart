@@ -74,12 +74,12 @@ class MyAppState extends State<MyApp> {
  *     its contents to a new class which extends State. Now the initial class
  *     will be empty so extend it with StatefulWidget. 
  *  2. add generic type to the State wali new class to connect the 2 classes. 
- *  3. override the createState method in the StatefulWidget wali class. 
- *     it looks like the getState() in react. 
+ *  3. override the createState() method in the StatefulWidget wali class. 
+ *     same thing we do with state object in ctor and the useState() hook in react. 
  *  note that, we return an object of State<StatefulWidget> from the createState 
  *  method and our own new class is of type State<StatefulWidget> also. 
  * 
- * now, we connected the 2 classes. 
+ *  now, we connected the 2 classes. 
  * 
  *  ## why do we keep the build method in State wali class ??
  * - because everytime we want the widget to reload and rebuild while the state
