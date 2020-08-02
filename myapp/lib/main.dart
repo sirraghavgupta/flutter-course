@@ -82,18 +82,15 @@ class MyAppState extends State<MyApp> {
  *  now, we connected the 2 classes. 
  * 
  *  ## why do we keep the build method in State wali class ??
- * - because everytime we want the widget to reload and rebuild while the state
- *   will not be rebuild everytime and thats how it preserves the state. 
- *   the state object will be bound to the stateful widget object. so the 
- *   widget will be rebuild everytime and not the state. 
+ * - because the widget will be recreated multiple times but the state is 
+ *   persistent. so, it remains the same and preserved. so, we separate them. 
  *   PROPER LOGIC NOT CLEAR - SEE LATER. 
  * 
- *  ## we need to use the setState method to update the state. same reason as 
- *  react that otherwise it will not rerender the widget. 
- * 
- *  now, whenever the state will change, it will call the build method again 
- *  and re render the app. 
- *  NOTE - it will not re render the complete app. it also has an internal 
+ *  ## we need to use the setState method to update the state. Same reason as 
+ *  react that otherwise it will not re-render the widget. 
+ *  Whenever setState is called, it calls the build method again in the widget 
+ *  where setSatte is called. and then it build the widget again. but it will 
+ *  not re render the complete app. it also has an internal 
  *  mechanism which detects what has actually changed and needs to be re rendered. 
  *  just as we have a mechanism in react. so the concepts are same. 
  */
