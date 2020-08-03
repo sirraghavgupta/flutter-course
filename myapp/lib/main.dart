@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         title: Text('My First App'),
       ),
       body: Column(children: [
-        Text(questions[_questionIndex]),
+        Question(questions[_questionIndex]),
         RaisedButton(
           child: Text('Orange'),
           onPressed: _answerQuestion,
@@ -61,4 +62,15 @@ class _MyAppState extends State<MyApp> {
  * 
  * private here means that the class or var can be accessed from within this
  * file only.
+ */
+
+/**
+ * NOTE - 
+ * when the state changes, the build metod of the widget is class which 
+ * then build the widget tree again and calls the build method of all other 
+ * widgets also. but then their build method decides that whether i need 
+ * to re render or not. 
+ * here we see that the questionIndex changes and the build of all buttons is
+ * also called but they dont re render as they see that we dont need to do so. 
+ * Question widget however gets re-rendered. 
  */
