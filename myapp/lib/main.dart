@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,16 +16,27 @@ class _MyAppState extends State<MyApp> {
 
   void _answerQuestion() {
     setState(() {
-      if (_questionIndex < 1) _questionIndex += 1;
+      if (_questionIndex < 2) _questionIndex += 1;
     });
     print('Button clicked');
   }
 
   @override
   Widget build(BuildContext context) {
+    // Map comments in the end.
     var questions = [
-      'Which is your favourite colour?',
-      'Which is your favourite animal?',
+      {
+        'questionText': 'Which is your favourite colour?',
+        'answers': ['Orange', 'Red', 'Blue', 'Yellow'],
+      },
+      {
+        'questionText': 'Which is your favourite animal?',
+        'answers': ['Rabbit', 'Dog', 'Cat', 'Panda', 'Parrot'],
+      },
+      {
+        'questionText': 'Who is your favourite teacher?',
+        'answers': ['didu', 'didu', 'didu'],
+      },
     ];
 
     return MaterialApp(
@@ -33,44 +45,32 @@ class _MyAppState extends State<MyApp> {
         title: Text('My First App'),
       ),
       body: Column(children: [
-        Question(questions[_questionIndex]),
-        RaisedButton(
-          child: Text('Orange'),
-          onPressed: _answerQuestion,
-        ),
-        RaisedButton(
-          child: Text('Red'),
-          onPressed: _answerQuestion,
-        ),
-        RaisedButton(
-          child: Text('Yellow'),
-          onPressed: _answerQuestion,
-        ),
-        RaisedButton(
-          child: Text('Green'),
-          onPressed: _answerQuestion,
-        ),
+        Question(questions[_questionIndex]['questionText']),
+        ...(questions[_questionIndex]['answers'] as List<String>)
+            .map((answer) => Answer(_answerQuestion, answer))
+            .toList()
       ]),
     ));
+    /**
+     * here the map method is just like the map() in js. it returns an object 
+     * of Iterable here but we need a list of widgets here, so we convert it to
+     * List by toList(). 
+     * then we also need a single List in the Container, so we need to spread the 
+     * List by using the spread operator. 
+     * Also, the inferred type of answers here is Obejct but we cant run map()
+     * on that and we know that its of List type, so, we use the 'as' keyword to
+     * tell dart to consider it as of type List. 
+     */
   }
 }
 
 /**
- * here we are seeing private properties in dart - 
- * for that we need to add _ in front of that variable or class everyehere. 
- * where we create that and where we use that also. 
+ * Map  - 
+ * map in dart is just like a json object. we can write the form of key value 
+ * pairs. we dont need to make a class here, so we are using this syntax of creating an d
+ * object and its called a map in dart.
  * 
- * private here means that the class or var can be accessed from within this
- * file only.
- */
-
-/**
- * NOTE - 
- * when the state changes, the build metod of the widget is class which 
- * then build the widget tree again and calls the build method of all other 
- * widgets also. but then their build method decides that whether i need 
- * to re render or not. 
- * here we see that the questionIndex changes and the build of all buttons is
- * also called but they dont re render as they see that we dont need to do so. 
- * Question widget however gets re-rendered. 
+ * it also auto infers the type of the map like here - List<Map<String, Object>>
+ * 
+ * we can also use the Map class btw.
  */
