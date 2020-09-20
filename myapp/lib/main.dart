@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // Map comments in the end.
-    var questions = [
+    const questions = [
       {
         'questionText': 'Which is your favourite colour?',
         'answers': ['Orange', 'Red', 'Blue', 'Yellow'],
